@@ -5,16 +5,10 @@ local opts = { noremap = true, silent = true }
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- Directory Navigation
--- keymap.set("n", "<leader>m", "<cmd>NvimTreeFocus<CR>", opts)
--- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
-
-    -- Recomended keybinds
-    -- nnoremap / :Neotree toggle current reveal_force_cwd<cr>
-    -- nnoremap | :Neotree reveal<cr>
-    -- nnoremap gd :Neotree float reveal_file=<cfile> reveal_force_cwd<cr>
-    -- nnoremap <leader>b :Neotree toggle show buffers right<cr>
-    -- nnoremap <leader>s :Neotree float git_status<cr>
-
+keymap.set("n", "<leader>e", "<cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true <CR>")
+keymap.set("n", "<leader>m", "<cmd>Neotree action=focus source=filesystem <CR>")
+keymap.set("n", "<leader>ge", "<cmd>Neotree source=git_status position=float <CR>")
+keymap.set("n", "<leader>be", "<cmd>Neotree source=buffers toggle=true <CR>")
 
 -- Buffer Navegation
 keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
