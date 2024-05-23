@@ -8,10 +8,19 @@ keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 -- keymap.set("n", "<leader>m", "<cmd>NvimTreeFocus<CR>", opts)
 -- keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
 
--- Buffer
+    -- Recomended keybinds
+    -- nnoremap / :Neotree toggle current reveal_force_cwd<cr>
+    -- nnoremap | :Neotree reveal<cr>
+    -- nnoremap gd :Neotree float reveal_file=<cfile> reveal_force_cwd<cr>
+    -- nnoremap <leader>b :Neotree toggle show buffers right<cr>
+    -- nnoremap <leader>s :Neotree float git_status<cr>
+
+
+-- Buffer Navegation
 keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
 keymap.set("n", "]b", "<cmd>bnext<CR>", opts)
 keymap.set("n", "[b", "<cmd>bnext<CR>", opts)
+keymap.set("n", "<leader>bb", "e #", opts)
 
 -- Pane Navigation
 keymap.set("n", "<C-h>", "<C-w>h", opts) -- Navigation Left
@@ -25,6 +34,20 @@ keymap.set("n", "<leader>pa", "echo expand('%:p')<CR>") -- Show Full File Path
 -- Window Managment
 keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", opts) -- Split Vertically
 keymap.set("n", "<leader>sh", "<cmd>split<CR>", opts) -- Split Horizontally
+
+-- Resize window using <ctrl> hjkl keys
+keymap.set("n", "<C-Up>", "<cmd>resize +5<CR>", { desc = "Increase Window Height" })
+keymap.set("n", "<C-Down>", "<cmd>resize -5<CR>", { desc = "Decrease Window Height" })
+keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease Window Width" })
+keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase Window Width" })
+
+-- Move Lines
+keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Increment/Decrement
 keymap.set("n", "+", "<C-a>")
