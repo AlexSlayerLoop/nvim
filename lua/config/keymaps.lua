@@ -28,6 +28,7 @@ keymap.set("n", "<leader>pa", "echo expand('%:p')<CR>") -- Show Full File Path
 -- Window Managment
 keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", opts) -- Split Vertically
 keymap.set("n", "<leader>sh", "<cmd>split<CR>", opts) -- Split Horizontally
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", opts) -- Close Split
 
 -- Resize window using <ctrl> hjkl keys
 keymap.set("n", "<C-Up>", "<cmd>resize +5<CR>", { desc = "Increase Window Height" })
