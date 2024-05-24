@@ -13,7 +13,7 @@ keymap.set("n", "<leader>be", "<cmd>Neotree source=buffers toggle=true <CR>")
 -- Buffer Navegation
 keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
 keymap.set("n", "]b", "<cmd>bnext<CR>", opts)
-keymap.set("n", "[b", "<cmd>bnext<CR>", opts)
+keymap.set("n", "[b", "<cmd>bprevious<CR>", opts)
 keymap.set("n", "<leader>bb", "e #", opts)
 
 -- Pane Navigation
