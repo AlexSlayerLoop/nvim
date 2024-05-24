@@ -26,7 +26,7 @@ opt.list = true
 opt.pumblend = 10
 
 -- Behaviour
--- opt.showmode = false
+opt.showmode = false
 opt.hidden = true
 opt.errorbells = false
 opt.swapfile = false
