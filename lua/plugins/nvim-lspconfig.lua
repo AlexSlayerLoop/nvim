@@ -29,6 +29,7 @@ local config = function()
 						[vim.fn.stdpath("config") .. "/lua"] = true,
 					},
 				},
+				hint = { enable = true },
 			},
 		},
 	})
@@ -183,5 +184,8 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
 		"lukas-reineke/lsp-format.nvim",
+	},
+	opts = {
+		inlay_hints = { enabled = true },
 	},
 }
