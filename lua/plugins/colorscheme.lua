@@ -2,9 +2,9 @@ return {
 	"catppuccin/nvim",
 	name = "theme",
 	lazy = false,
-	priority = 999,
+	priority = 1000,
 	config = function()
-		vim.cmd("colorscheme catppuccin")
 		require("catppuccin").setup({})
+		vim.cmd("colorscheme catppuccin-mocha")
 	end,
 }
