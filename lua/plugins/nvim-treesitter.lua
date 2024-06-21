@@ -22,6 +22,7 @@ local config = function()
 			"dockerfile",
 			"gitignore",
 			"python",
+			"cmake",
 			"c",
 			"cpp",
 			"vue",

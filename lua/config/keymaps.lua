@@ -3,6 +3,7 @@ local opts = { noremap = true, silent = true }
 
 -- Exit Insert mode
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
+keymap.set("i", "kj", "<ESC>", { desc = "Exit insert mode with kj" })
 
 -- Directory Navigation
 keymap.set("n", "<leader>e", "<cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true <CR>")
