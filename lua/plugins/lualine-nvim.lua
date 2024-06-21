@@ -3,13 +3,13 @@ local config = function()
 		options = {
 			theme = "auto",
 			globalstatus = true,
-      section_separators = { left = '', right = '' },
-      component_separators = { left = '', right = '' }
+			section_separators = { left = "", right = "" },
+			component_separators = { left = "", right = "" },
 		},
 		sections = {
 			lualine_a = { "mode" },
 			lualine_b = { "buffers" },
-      lualine_c = {},
+			lualine_c = {},
 			lualine_x = { "encoding", "fileformat", "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
