@@ -21,7 +21,7 @@ local opts = {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "catppuccin" },
+		colorscheme = { "carbonfox" },
 	},
 	rtp = {
 		disabled_plugins = {
