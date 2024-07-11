@@ -11,11 +11,12 @@ keymap.set("n", "<leader>m", "<cmd>Neotree action=focus source=filesystem <CR>")
 keymap.set("n", "<leader>ge", "<cmd>Neotree source=git_status position=float <CR>")
 keymap.set("n", "<leader>be", "<cmd>Neotree source=buffers toggle=true <CR>")
 
--- Buffer Navegation
+-- Buffers
 keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
 keymap.set("n", "]b", "<cmd>bnext<CR>", opts)
 keymap.set("n", "[b", "<cmd>bprevious<CR>", opts)
 keymap.set("n", "<leader>bb", "e #", opts)
+keymap.set("n", "<leader>bq", "<cmd>CloseOtherBuffers<CR>", { desc = "Close other buffers except the current one" })
 
 -- Pane Navigation
 keymap.set("n", "<C-h>", "<C-w>h", opts) -- Navigation Left
@@ -24,7 +25,7 @@ keymap.set("n", "<C-k>", "<C-w>k", opts) -- Navigation Up
 keymap.set("n", "<C-l>", "<C-w>l", opts) -- Navigation Right
 
 -- Show File-Path
-keymap.set("n", "<leader>pa", "echo expand('%:p')<CR>") -- Show Full File Path
+keymap.set("n", "<leader>pa", "<cmd>ShowPath<CR>") -- Show Full File Path
 
 -- Window Managment
 keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", opts) -- Split Vertically
