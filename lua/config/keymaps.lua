@@ -3,7 +3,6 @@ local opts = { noremap = true, silent = true }
 
 -- Exit Insert mode
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
-keymap.set("i", "kj", "<ESC>", { desc = "Exit insert mode with kj" })
 
 -- Directory Navigation
 keymap.set("n", "<leader>e", "<cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true <CR>")
@@ -15,7 +14,6 @@ keymap.set("n", "<leader>be", "<cmd>Neotree source=buffers toggle=true <CR>")
 keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
 keymap.set("n", "]b", "<cmd>bnext<CR>", opts)
 keymap.set("n", "[b", "<cmd>bprevious<CR>", opts)
-keymap.set("n", "<leader>bb", "e #", opts)
 keymap.set("n", "<leader>bq", "<cmd>CloseOtherBuffers<CR>", { desc = "Close other buffers except the current one" })
 
 -- Pane Navigation
