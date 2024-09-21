@@ -4,7 +4,7 @@ local opts = {
 		"lua_ls",
 		"pyright",
 		"bashls",
-		"tsserver",
+		"ts_ls",
 		"emmet_ls",
 		"jsonls",
 		"dockerls",

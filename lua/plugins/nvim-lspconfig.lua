@@ -25,8 +25,8 @@ local config = function()
 				workspace = {
 					-- make language server aware of runtime files
 					library = {
-            vim.fn.expand("$VIMRUNTIME/lua"),
-            vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
+						vim.fn.expand("$VIMRUNTIME/lua"),
+						vim.fn.expand("$XDG_CONFIG_HOME") .. "/nvim/lua",
 					},
 				},
 				hint = { enable = true },
@@ -59,7 +59,7 @@ local config = function()
 	})
 
 	-- typescript
-	lspconfig.tsserver.setup({
+	lspconfig.ts_ls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		filetypes = {
@@ -138,8 +138,8 @@ local config = function()
 			"docker",
 			"html",
 			"css",
-			-- "c",
-			-- "cpp",
+			"c",
+			"cpp",
 		},
 		on_attach = require("lsp-format").on_attach,
 		init_options = {
