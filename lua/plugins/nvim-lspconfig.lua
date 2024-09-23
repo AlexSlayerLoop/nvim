@@ -109,6 +109,16 @@ local config = function()
 		on_attach = on_attach,
 	})
 
+	-- C/C++
+	lspconfig.clangd.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		cmd = {
+			"clangd",
+			"--offset-encoding=utf-16",
+		},
+	})
+
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
@@ -119,6 +129,8 @@ local config = function()
 	local shellcheck = require("efmls-configs.linters.shellcheck")
 	local shfmt = require("efmls-configs.formatters.shfmt")
 	local hadolint = require("efmls-configs.linters.hadolint")
+	local cpplint = require("efmls-configs.linters.cpplint")
+	local clangformat = require("efmls-configs.formatters.clang_format")
 
 	-- configure efm server
 	lspconfig.efm.setup({
@@ -167,6 +179,8 @@ local config = function()
 				docker = { hadolint, prettier_d },
 				html = { prettier_d },
 				css = { prettier_d },
+				c = { cpplint, clangformat },
+				cpp = { cpplint, clangformat },
 			},
 		},
 	})

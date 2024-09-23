@@ -8,6 +8,7 @@ local opts = {
 		"emmet_ls",
 		"jsonls",
 		"dockerls",
+		"clangd",
 	},
 	automatic_installation = true,
 }
