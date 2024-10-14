@@ -1,3 +1,4 @@
+---@diagnostic disable:missing-fields
 local on_attach = require("util.lsp").on_attach
 local diagnostic_signs = require("util.icons").diagnostic_signs
 
