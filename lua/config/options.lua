@@ -24,8 +24,11 @@ opt.cmdheight = 1
 opt.completeopt = "menuone,noinsert,noselect"
 opt.list = true
 opt.pumblend = 10
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Behaviour
+vim.opt.inccommand = "split"
 opt.showmode = false
 opt.hidden = true
 opt.errorbells = false
@@ -39,17 +42,7 @@ opt.sidescrolloff = 8
 opt.mouse = "a"
 opt.clipboard:append("unnamedplus")
 
-if vim.fn.has("wsl") == 1 then
-	vim.g.clipboard = {
-		name = "WslClipboard",
-		copy = {
-			["+"] = "clip.exe",
-			["*"] = "clip.exe",
-		},
-		paste = {
-			["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-			["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-		},
-		cache_enabled = 0,
-	}
-end
+-- Folds
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
