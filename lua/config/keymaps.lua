@@ -2,7 +2,7 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Exit Insert mode
-keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
+keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jj" })
 
 -- Directory Navigation
 keymap.set("n", "<leader>e", "<cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true <CR>")
@@ -27,14 +27,14 @@ keymap.set("n", "<leader>pa", "<cmd>ShowPath<CR>") -- Show Full File Path
 
 -- Window Managment
 keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", opts) -- Split Vertically
-keymap.set("n", "<leader>sh", "<cmd>split<CR>", opts) -- Split Horizontally
+keymap.set("n", "<leader>ss", "<cmd>split<CR>", opts) -- Split Horizontally
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", opts) -- Close Split
 
--- Resize window using <ctrl> hjkl keys
-keymap.set("n", "<C-Up>", "<cmd>resize +5<CR>", { desc = "Increase Window Height" })
-keymap.set("n", "<C-Down>", "<cmd>resize -5<CR>", { desc = "Decrease Window Height" })
-keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease Window Width" })
-keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase Window Width" })
+-- Resize window using
+keymap.set("n", "<Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease Window Width" })
+keymap.set("n", "<Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase Window Width" })
+keymap.set("n", "<Up>", "<cmd>resize +5<CR>", { desc = "Increase Window Height" })
+keymap.set("n", "<Down>", "<cmd>resize -5<CR>", { desc = "Decrease Window Height" })
 
 -- Move Lines
 keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
@@ -51,10 +51,3 @@ keymap.set("n", "-", "<C-x>")
 -- Indenting
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
-
--- Inlay Hint
-if vim.lsp.inlay_hint then
-	keymap.set("n", "<leader>uh", function()
-		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
-	end, { desc = "Toggle Inlay Hints" })
-end
