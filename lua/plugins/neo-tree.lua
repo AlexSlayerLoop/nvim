@@ -10,7 +10,7 @@ return {
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
 	opts = {
-		popup_border_style = "rounded", -- "double", "none", "rounded", "shadow", "single" or "solid"
+		popup_border_style = "solid", -- "double", "none", "rounded", "shadow", "single" or "solid"
 		window = {
 			position = "right",
 			mappings = {
@@ -18,7 +18,7 @@ return {
 			},
 		},
 		filesystem = {
-			hijack_netrw_behavior = "open_current",
+			hijack_netrw_behavior = "open_current", -- "open_current",
 			use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
 		},
 		default_component_configs = {
