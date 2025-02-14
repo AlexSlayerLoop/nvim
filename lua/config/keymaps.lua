@@ -1,14 +1,11 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- write without Formatting | <cmd>noa[utocmd] w [file] <cr>
+keymap.set("n", "<leader>W", "<cmd>noa w<cr>", { desc = "Write without formatting" })
+
 -- Exit Insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jj" })
-
--- Directory Navigation
-keymap.set("n", "<leader>e", "<cmd>Neotree action=focus source=filesystem position=right toggle=true reveal=true <CR>")
-keymap.set("n", "<leader>m", "<cmd>Neotree action=focus source=filesystem <CR>")
-keymap.set("n", "<leader>ge", "<cmd>Neotree source=git_status position=float <CR>")
-keymap.set("n", "<leader>be", "<cmd>Neotree source=buffers toggle=true <CR>")
 
 -- Buffers
 keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
@@ -27,7 +24,7 @@ keymap.set("n", "<leader>pa", "<cmd>ShowPath<CR>") -- Show Full File Path
 
 -- Window Managment
 keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", opts) -- Split Vertically
-keymap.set("n", "<leader>ss", "<cmd>split<CR>", opts) -- Split Horizontally
+keymap.set("n", "<leader>sh", "<cmd>split<CR>", opts) -- Split Horizontally
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", opts) -- Close Split
 
 -- Resize window using
@@ -35,6 +32,11 @@ keymap.set("n", "<Left>", "<cmd>vertical resize -5<CR>", { desc = "Decrease Wind
 keymap.set("n", "<Right>", "<cmd>vertical resize +5<CR>", { desc = "Increase Window Width" })
 keymap.set("n", "<Up>", "<cmd>resize +5<CR>", { desc = "Increase Window Height" })
 keymap.set("n", "<Down>", "<cmd>resize -5<CR>", { desc = "Decrease Window Height" })
+
+-- QuickFix
+keymap.set("n", "<A-p>", "<cmd>cprev<cr>", { desc = "QuickFix: prevew" })
+keymap.set("n", "<A-n>", "<cmd>cnext<cr>", { desc = "QuickFix: prevew" })
+keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "QuickFix: open" })
 
 -- Move Lines
 keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
