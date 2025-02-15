@@ -54,6 +54,15 @@ return {
 				end,
 			},
 		},
+		keys = {
+			{
+				"\\",
+				function()
+					require("oil").toggle_float()
+				end,
+				desc = "Open parent directory",
+			},
+		},
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	},
 	{

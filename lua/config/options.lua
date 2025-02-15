@@ -24,11 +24,12 @@ opt.cmdheight = 1
 opt.completeopt = "menuone,noinsert,noselect"
 opt.list = true
 opt.pumblend = 10
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- Behaviour
-vim.opt.inccommand = "split"
+opt.inccommand = "split"
+opt.laststatus = 3
 opt.showmode = false
 opt.hidden = true
 opt.errorbells = false

@@ -3,17 +3,22 @@ local keymap = vim.keymap
 local M = {}
 
 -- set keymaps on the active lsp server
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
 	-- local opts = { noremap = true, silent = true, buffer = bufnr }
-
-	-- TODO: create this functionality
-	-- if client.name == "pyright" then
-	-- 	keymap.set("n", "<Leader>oi", "<cmd>PyrightOrganizeImports<CR>", opts)
-	-- end
 
 	local map = function(keys, func, desc, mode)
 		mode = mode or "n"
 		keymap.set(mode, keys, func, { buffer = bufnr, desc = "LSP: " .. desc })
+	end
+
+	if client.name == "pyright" then
+		map("<leader>oi", "<cmd>PyrightOrganizeImports<CR>", "Python [O]rganize [I]mports")
+	end
+
+	if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+		map("<leader>uh", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
+		end, "[T]oggle Inlay [H]ints")
 	end
 
 	--  This is where a variable was first declared, or where a function is defined, etc.

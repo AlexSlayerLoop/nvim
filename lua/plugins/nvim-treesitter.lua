@@ -1,4 +1,5 @@
 local config = function()
+	---@diagnostic disable-next-line: missing-fields
 	require("nvim-treesitter.configs").setup({
 		build = ":TSUpdate",
 		indent = {
@@ -26,8 +27,10 @@ local config = function()
 			"c",
 			"cpp",
 			"vue",
+			"sql",
 			"svelte",
 			"toml",
+			"http",
 		},
 		auto_install = true,
 		highlight = {
