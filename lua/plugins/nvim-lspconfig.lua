@@ -56,9 +56,11 @@ local config = function()
 					autoSearchPaths = true,
 					diagnosticMode = "workspace",
 					autoImportCompletions = true,
+					-- typeCheckingMode = "strict", -- "standard"
 				},
 			},
 		},
+		root_dir = lspconfig.util.root_pattern("requirements.txt", "pyproject.toml"),
 	})
 
 	-- typescript
@@ -110,6 +112,7 @@ local config = function()
 	lspconfig.dockerls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+		filetypes = { "yaml.docker-compose" },
 	})
 
 	-- C/C++
@@ -120,6 +123,11 @@ local config = function()
 			"clangd",
 			"--offset-encoding=utf-16",
 		},
+	})
+
+	lspconfig.prismals.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
 	})
 
 	local luacheck = require("efmls-configs.linters.luacheck")
@@ -134,6 +142,7 @@ local config = function()
 	local shfmt = require("efmls-configs.formatters.shfmt")
 	local cpplint = require("efmls-configs.linters.cpplint")
 	local clangformat = require("efmls-configs.formatters.clang_format")
+	local sql_formatter = require("efmls-configs.formatters.sql-formatter")
 
 	-- configure efm server
 	lspconfig.efm.setup({
@@ -155,6 +164,8 @@ local config = function()
 			"css",
 			"c",
 			"cpp",
+			"prisma",
+			"sql",
 		},
 		on_attach = require("lsp-format").on_attach,
 		init_options = {
@@ -184,6 +195,7 @@ local config = function()
 				css = { prettier_d },
 				c = { cpplint, clangformat },
 				cpp = { cpplint, clangformat },
+				sql = { sql_formatter },
 			},
 		},
 	})
@@ -194,7 +206,7 @@ return {
 	config = config,
 	lazy = false,
 	dependencies = {
-		"windwp/nvim-autopairs",
+		-- "windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
 		{ "creativenull/efmls-configs-nvim", version = "v1.x.x" },
 		"hrsh7th/nvim-cmp",

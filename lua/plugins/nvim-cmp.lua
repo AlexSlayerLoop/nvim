@@ -9,6 +9,14 @@ return {
 
 		vim.opt.completeopt = "menu,menuone,noselect"
 
+		-- Setup up vim-dadbod
+		cmp.setup.filetype({ "sql" }, {
+			sources = {
+				{ name = "vim-dadbod-completion" },
+				{ name = "buffer" },
+			},
+		})
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -30,8 +38,10 @@ return {
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
+				{ name = "lazydev", group_index = 0 },
 			}),
 			-- configure lspkind for vs-code like icons
+			---@diagnostic disable-next-line: missing-fields
 			formatting = {
 				format = lspkind.cmp_format({
 					maxwidth = 50,
@@ -42,6 +52,7 @@ return {
 	end,
 	dependencies = {
 		"onsails/lspkind.nvim",
+		"saadparwaiz1/cmp_luasnip",
 		{
 
 			"L3MON4D3/LuaSnip",
@@ -49,6 +60,7 @@ return {
 			version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 			-- install jsregexp (optional!).
 			build = "make install_jsregexp",
+			dependencies = { "rafamadriz/friendly-snippets" },
 		},
 	},
 }

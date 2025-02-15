@@ -51,6 +51,7 @@ return {
 					"shellcheck",
 					"fixjson",
 					"hadolint",
+					"sql-formatter",
 				},
 			})
 		end,
