@@ -38,6 +38,9 @@ keymap.set("n", "<A-p>", "<cmd>cprev<cr>", { desc = "QuickFix: prevew" })
 keymap.set("n", "<A-n>", "<cmd>cnext<cr>", { desc = "QuickFix: prevew" })
 keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "QuickFix: open" })
 
+-- Diagnostics
+keymap.set("n", "<leader>od", vim.diagnostic.open_float, { desc = "Diagnostics: [O]pen [D]iagnostic" })
+
 -- Move Lines
 keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
 keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })

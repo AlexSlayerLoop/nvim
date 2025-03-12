@@ -5,6 +5,7 @@ return {
 	version = "*",
 	opts = {
 		-- theme = "solarized-osaka",
+		exclude_filetypes = { "netrw", "toggleterm", "sql", "dbui", "dbout", "csv" },
 	},
 	dependencies = {
 		"neovim/nvim-lspconfig",

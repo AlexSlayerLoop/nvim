@@ -4,7 +4,7 @@ return {
 		"kristijanhusak/vim-dadbod-ui",
 		lazy = false,
 		keys = {
-			{ "<leader>od", "<cmd>tabnew | DBUI<cr>" },
+			{ "<leader>oD", "<cmd>tabnew | DBUI<cr>" },
 		},
 	},
 	{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" } },
