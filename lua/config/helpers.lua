@@ -17,3 +17,7 @@ local function close_other_buffers()
 	end
 end
 vim.api.nvim_create_user_command("CloseOtherBuffers", close_other_buffers, { nargs = "?" })
+
+-- create a markdown note with a template
+local create_markdown_note = require("util.template").create_markdown_file
+vim.api.nvim_create_user_command("CreateMarkdownNote", create_markdown_note, {})
