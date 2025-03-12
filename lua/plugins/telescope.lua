@@ -1,17 +1,22 @@
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
+local themes = require("telescope.themes")
+
 local config = function()
-	local telescope = require("telescope")
 	telescope.setup({
-		defaults = require("telescope.themes").get_ivy({
+		defaults = themes.get_ivy({
 			mappings = {
 				i = {
 					["<C-j>"] = "move_selection_next",
 					["<C-k>"] = "move_selection_previous",
+					["<esc>"] = "close",
 				},
 			},
 		}),
 		pickers = {
 			live_grep = {
-				file_ignore_patterns = { "node_modules", ".venv", ".git" },
+				file_ignore_patterns = { "node_modules", ".venv", "^.git/", ".obsidian", ".DS_Store" },
 				additional_args = function(_)
 					return { "--hidden", "--no-ignore-vcs" }
 				end,
@@ -19,12 +24,22 @@ local config = function()
 				no_ignore = true,
 			},
 			find_files = {
-				file_ignore_patterns = { "node_modules", ".venv", ".git" },
+				file_ignore_patterns = { "node_modules", ".venv", "^.git/", ".obsidian", ".DS_Store" },
 				additional_args = function(_)
 					return { "--hidden", "--no-ignore-vcs" }
 				end,
 				hidden = true,
 				no_ignore = true,
+			},
+			buffers = {
+				mappings = {
+					i = {
+						["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+					},
+					n = {
+						["d"] = actions.delete_buffer,
+					},
+				},
 			},
 		},
 		extensions = {
@@ -36,7 +51,7 @@ local config = function()
 				-- the default case_mode is "smart_case"
 			},
 			["ui-select"] = {
-				require("telescope.themes").get_dropdown({
+				themes.get_dropdown({
 					previewer = false,
 					initial_mode = "normal",
 				}),
@@ -50,50 +65,64 @@ end
 local keys = {
 	{
 		"<leader>ff",
-		require("telescope.builtin").find_files,
+		function()
+			builtin.find_files()
+		end,
 		desc = "[F]ind All [F]iles",
 	},
 	{
 		"<leader>fh",
-		require("telescope.builtin").help_tags,
+		function()
+			builtin.help_tags()
+		end,
 		desc = "[F]ind [H]elp",
 	},
 	{
 		"<leader>fb",
-		require("telescope.builtin").buffers,
+		function()
+			builtin.buffers()
+		end,
 		desc = "[B]uffers",
 	},
 	{
 		"<leader>fc",
-		require("telescope.builtin").git_commits,
+		function()
+			builtin.git_commits()
+		end,
 		desc = "[C]ommits",
 	},
 	{
 		"<leader>fo",
-		require("telescope.builtin").oldfiles,
+		function()
+			builtin.oldfiles()
+		end,
 		desc = "[O]ld Files",
 	},
 	{
 		"<leader>fr",
-		require("telescope.builtin").live_grep,
+		function()
+			builtin.live_grep()
+		end,
 		desc = "[R]ipgrep",
 	},
 	{
 		"<leader>fs",
-		require("telescope.builtin").grep_string,
+		function()
+			builtin.grep_string()
+		end,
 		desc = "Grep [S]tring",
 	},
 	{
 		"<leader>fa",
 		function()
-			require("telescope.builtin").builtin(require("telescope.themes").get_dropdown({ previewer = false }))
+			builtin.builtin(themes.get_dropdown({ previewer = false }))
 		end,
 		desc = "Find [A]ll Telescopes",
 	},
 	{
 		"<leader>/",
 		function()
-			require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+			builtin.current_buffer_fuzzy_find(themes.get_dropdown({
 				winblend = 10,
 				previewer = false,
 			}))
@@ -103,26 +132,38 @@ local keys = {
 	{
 		"<leader>s/",
 		function()
-			require("telescope.builtin").live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
+			builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
 		end,
 		desc = "[S]earch [/] in Open Files",
 	},
 	{
 		"<leader>fn",
 		function()
-			require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+			builtin.find_files({
+				cwd = vim.fn.stdpath("config"),
+			})
 		end,
 		desc = "Search [N]eovim files",
 	},
 	{
 		"<leader>fp",
 		function()
-			require("telescope.builtin").find_files({
+			builtin.find_files({
 				---@diagnostic disable-next-line: param-type-mismatch
 				cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
 			})
 		end,
 		desc = "[P]lugins Data",
+	},
+	{
+		"<leader>fw",
+		function()
+			builtin.find_files({
+				---@diagnostic disable-next-line: param-type-mismatch
+				cwd = "~/Documents/Obsidian/MyVault",
+			})
+		end,
+		desc = "[F]ind In [W]iki",
 	},
 }
 
